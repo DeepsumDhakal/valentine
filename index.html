@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine 💕</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ffd6e8, #ffeef6);
+    font-family: 'Comic Sans MS', 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.container {
+    z-index: 2;
+    padding: 20px;
+}
+
+h1 {
+    color: #ff4d88;
+    font-size: 1.9rem;
+    font-weight: 900;
+    line-height: 1.4;
+}
+
+.buttons {
+    margin-top: 35px;
+    position: relative;
+    height: 130px;
+}
+
+button {
+    font-size: 1.3rem;
+    padding: 14px 32px;
+    border-radius: 40px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+#yesBtn {
+    background: #ff85b3;
+    color: white;
+    box-shadow: 0 10px 25px rgba(255,133,179,0.4);
+}
+
+#noBtn {
+    background: #cfcfcf;
+    color: #555;
+    position: absolute;
+    left: 55%;
+}
+
+.result {
+    display: none;
+    color: #ff2f7d;
+    font-size: 2.1rem;
+    font-weight: 900;
+    margin-top: 25px;
+}
+
+.result img {
+    width: 220px;
+    margin-top: 15px;
+    border-radius: 25px;
+}
+
+/* Floating hearts */
+.heart {
+    position: absolute;
+    font-size: 22px;
+    animation: float 7s linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(100vh) scale(0.8);
+    }
+    to {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* Cute graffiti */
+.graffiti {
+    position: absolute;
+    font-size: 2.2rem;
+    animation: pop 1.5s ease-out forwards;
+}
+
+@keyframes pop {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1.3); opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>
+        Reeya 🥺💗<br>
+        WILL YOU BE MY<br>
+        VALENTINE?
+    </h1>
+
+    <div class="buttons">
+        <button id="yesBtn">YES 💕</button>
+        <button id="noBtn">NO 🙈</button>
+    </div>
+
+    <div class="result" id="result">
+        I KNEW YOU LOVE ME 🥰💖
+        <br>
+        <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif">
+    </div>
+</div>
+
+<script>
+// Floating hearts
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = ["💗","💖","💕","💞","❤️"][Math.floor(Math.random()*5)];
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (18 + Math.random() * 18) + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 7000);
+}, 350);
+
+// NO button runs shy
+const noBtn = document.getElementById("noBtn");
+noBtn.addEventListener("mouseenter", runAway);
+noBtn.addEventListener("touchstart", runAway);
+
+function runAway() {
+    noBtn.style.left = Math.random() * 70 + "%";
+    noBtn.style.top = Math.random() * 90 + "px";
+}
+
+// YES click
+document.getElementById("yesBtn").onclick = () => {
+    document.getElementById("result").style.display = "block";
+    spreadCute();
+};
+
+// Cute graffiti
+function spreadCute() {
+    for (let i = 0; i < 25; i++) {
+        const g = document.createElement("div");
+        g.className = "graffiti";
+        g.innerHTML = ["💋","💖","✨","🎀","🫶"][Math.floor(Math.random()*5)];
+        g.style.left = Math.random()*100 + "vw";
+        g.style.top = Math.random()*100 + "vh";
+        document.body.appendChild(g);
+        setTimeout(() => g.remove(), 2000);
+    }
+}
+</script>
+
+</body>
+</html>
